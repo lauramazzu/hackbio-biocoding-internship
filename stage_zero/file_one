@@ -1,3 +1,5 @@
+#Stage 0 task
+
 team_tyrosine = [
 {
     # Details for member 1
@@ -5,7 +7,7 @@ team_tyrosine = [
     'slack_username_01': 'lauramazzu',
     'email_01': 'lauramazzu.lm@gmail.com',
     'hobby_01': ['music', 'travelling', 'learning', 'swimming', 'running', 'dancing', 'history countries'],
-    'country_01': 'Italian living in UK',
+    'country_01': 'Italian living in the UK',
     'discipline_01': 'microalgae biotechnology and ecology',
     'preferred programming language_01': 'python',
 },
@@ -39,7 +41,6 @@ team_tyrosine = [
     'discipline_04': 'Biomedical Engineering',
     'preferred programming language_04': 'Python',
 },
-
 {   # Details for member 5
         'name_05': 'Emmanuel Oluwarotimi Igiehon',
         'slack_username_05': 'Emma',
@@ -61,10 +62,12 @@ team_tyrosine = [
 }
 ]
 
-print(f"Below is a list with the details of all our hackbio internship team members. We are team tyrosine!"
+print(f"Below is a list with the details of all our Hackbio internship team members. We are team tyrosine!"
       f"\n details for team member one:\n {team_tyrosine[0]},"
       f"\n details for team member two:\n {team_tyrosine[1]},"
       f"\n details team member three:\n {team_tyrosine[2]},"
       f"\n details for team member four:\n {team_tyrosine[3]},"
       f"\n details for team member five:\n {team_tyrosine[4]},"
       f"\n details team member six:\n {team_tyrosine[5]}")
+
+   
