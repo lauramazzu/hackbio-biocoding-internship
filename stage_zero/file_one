@@ -1,0 +1,70 @@
+team_tyrosine = [
+{
+    # Details for member 1
+    'name_01': 'Laura Mazzucchi',
+    'slack_username_01': 'lauramazzu',
+    'email_01': 'lauramazzu.lm@gmail.com',
+    'hobby_01': ['music', 'travelling', 'learning', 'swimming', 'running', 'dancing', 'history countries'],
+    'country_01': 'Italian living in UK',
+    'discipline_01': 'microalgae biotechnology and ecology',
+    'preferred programming language_01': 'python',
+},
+{
+    # Details for member 2
+    'name_02': 'Ajayi Grace',
+    'slack_username_02': 'Grace',
+    'email_02': 'oluwasolagraceajayi@gmail.com',
+    'hobby_02': ['reading', 'learning new things'],
+    'country_02': 'Nigeria',
+    'discipline_02': 'Biochemistry',
+    'preferred programming language_02': 'R',
+},
+{
+    # Details for member 3
+    'name_03': 'Olajide Temitope',
+    'slack_username_03': 'Temitope',
+    'email_03': 'te.olajide@gmail.com',
+    'hobby_03': 'reading',
+    'country_03': 'Nigeria',
+    'discipline_03': 'Biology',
+    'preferred programming language_03': 'Python',
+},
+{
+    # Details for member 4
+    'name_04': 'Rebecca Batoh',
+    'slack_username_04': 'Becca',
+    'email_04': 'rebeccabatoh17@gmail.com',
+    'hobby_04': ['music', 'movies', 'reading'],
+    'country_04': 'Ghana',
+    'discipline_04': 'Biomedical Engineering',
+    'preferred programming language_04': 'Python',
+},
+
+{   # Details for member 5
+        'name_05': 'Emmanuel Oluwarotimi Igiehon',
+        'slack_username_05': 'Emma',
+        'email_05': 'emmanueligiehen80@gmail.com',
+        'hobby_05': ['music', 'learning', 'gaming'],
+        'country_05': 'Nigeria',
+        'discipline_05': 'Plant Biology and biotechnology',
+        'preferred_programming_language_05': 'python',
+    },
+
+ {  # Details for member 6
+        'name_06': 'Osasenaga Oluwatosin Igiehon',
+        'slack_username_06': 'Osas',
+        'email_06': 'osasenagaigiehon7@gmail.com',
+        'hobby_06': ['music', 'watching football', 'movies'],
+        'country_06': 'Nigeria',
+        'discipline_06': 'Animal Science',
+        'preferred_programming_language_06': 'python',
+}
+]
+
+print(f"Below is a list with the details of all our hackbio internship team members. We are team tyrosine!"
+      f"\n details for team member one:\n {team_tyrosine[0]},"
+      f"\n details for team member two:\n {team_tyrosine[1]},"
+      f"\n details team member three:\n {team_tyrosine[2]},"
+      f"\n details for team member four:\n {team_tyrosine[3]},"
+      f"\n details for team member five:\n {team_tyrosine[4]},"
+      f"\n details team member six:\n {team_tyrosine[5]}")
