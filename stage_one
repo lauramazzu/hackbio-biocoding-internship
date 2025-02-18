@@ -1,0 +1,119 @@
+#Task1
+#Write a function for translating DNA to protein
+
+from Bio.Seq import Seq
+from random import choices
+
+
+# Create a random DNA sequence string and store it in the dna_sequence variable as a sequence.
+bases = ["A", "C", "G", "T"]
+
+sequence = ""
+for i in range(13):
+    base = random.choice(bases)
+    sequence+=base
+print(sequence)
+
+dna_sequence = Seq(sequence)
+
+def translate(dna_sequence):
+    """given a random DNA sequence of specified length, this function translates DNA into proteins, using Biopython"""
+    rna_sequence =dna_sequence.transcribe()
+    protein_sequence = rna_sequence.translate()
+    return f"Protein Sequence: {protein_sequence}"
+
+print(translate(dna_sequence))
+
+
+#Task2
+#Write a function that simulates and generates a logistic population growth curve.
+#Your function should include 2 extra parameters that randomize the length of the lag phase and the exponential phase [See population curve here] .
+#Most living populations follow a logistic population growth.
+#Therefore, your growth curve can be: Population Size vs Time, Cell density vs Time, OD vs Time, CFU vs Time, etc
+#Using your function, generate a dataframe with 100 different growth curves
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import random
+
+
+def bacterial_growth(N, t, r, lag_time, log_time, stat_time, death_time, death_rate):
+    """ This function represents a bacterial growth model with its lag, log, stationary, and death phases.
+     N represents the number of cells at a specific time.
+     t is the time.
+     r represents the growth rate. A higher growth rate means the cells divide faster during the exponential growth phase.
+     the death rate is the rate of death."""
+    if t < lag_time:
+        return 0  # No growth during lag phase
+    elif t < lag_time + log_time:
+        return r * N  # Exponential (log) growth phase
+    elif t < lag_time + log_time + stat_time:
+        return 0  # Stationary phase (no net growth)
+    else:
+        return -death_rate * N  # Death phase
+
+
+
+def multiple_growth_curves(N0=0.01, r=0.2, death_rate=0.1):
+    """ This function generates 100 bacterial growth curves with randomized phases and specified parameters, growth rate and death_rate.
+     N0 is the population at the start.
+     """
+
+    #generate an array of time points from 0 to 70 with a step of 0.2. Specific values can be changed or added as parameters of the function.
+    time = np.arange(0, 40, 0.2)
+    all_curves = []
+
+    for i in range(100):
+        lag_time = random.uniform(0, 10)  # Random lag phase between 0-5 time units
+        log_time = random.uniform(5, 15)  # Random log phase between 5-15 time units
+        stat_time = random.uniform(5, 10)  # Random stationary phase between 5-10 time units
+        death_time = random.uniform(5, 10)  # Random death phase between 5-10 time units
+
+        N = [N0]
+        for t in range(1, len(time)):
+            #call the bacterial_growth function to compute dNdt.
+            dNdt = bacterial_growth(N[-1], time[t], r, lag_time, log_time, stat_time, death_time, death_rate)
+            N.append(max(0, N[-1] + dNdt * 0.2))  # Ensure population does not go negative
+
+        all_curves.append(N)
+
+    df = pd.DataFrame(all_curves, columns=time)
+    return df
+
+
+def plot_growth_curves(df):
+    """ This function plots multiple bacterial growth curves, taking a dataframe as a parameter """
+    plt.figure(figsize=(10, 5))
+    for i in range(df.shape[0]):
+        plt.plot(df.columns, df.iloc[i], alpha=0.5)
+    plt.xlabel("Time")
+    plt.ylabel("Population Size")
+    plt.title("Bacterial Growth Curves")
+    plt.show()
+
+
+
+
+# Generate and visualize the growth curves
+growth_df = multiple_growth_curves()
+print(growth_df)
+plot_growth_curves(growth_df)
+
+
+
+#Task3
+def time_reach_80_percent_K(K, r, N0):
+    """This function calculates the time needed for a bacterial population to reach 80% of the carrying capacity.
+    K is the carrying capacity, r is the growth rate and N0 is the bacterial population at time zero."""
+
+    target_time = 0.8*K
+
+    #solve for t using the growth equation
+    t = (1/r) * np.log(((K-N0) / N0)) * ((target_time) / (K- target_time))
+    return t
+
+#example
+target_time_ = time_reach_80_percent_K(K=1000, r=0.3, N0=50)
+print(f"The time needed to reach 80% of the carrying capacity is: {target_time_:.2f} time units")
+
